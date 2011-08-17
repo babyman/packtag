@@ -21,16 +21,15 @@
  */
 package net.sf.packtag.implementation.yui;
 
+import com.yahoo.platform.yui.compressor.CssCompressor;
+import net.sf.packtag.strategy.CssRewritePackStrategy;
+import net.sf.packtag.strategy.PackException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
-
-import net.sf.packtag.strategy.CssRewritePackStrategy;
-import net.sf.packtag.strategy.PackException;
-
-import com.yahoo.platform.yui.compressor.CssCompressor;
 
 
 
@@ -38,7 +37,7 @@ import com.yahoo.platform.yui.compressor.CssCompressor;
  * CSS Compressor by Isaac Schlueter (http://foohack.com).
  * The Compressor comes with the YuiCompressor.
  * 
- * @author Daniel Galán y Martins
+ * @author Daniel Galï¿½n y Martins
  * @version $Revision: 1.4 $
  */
 public class CssCompressorPackStrategy extends CssRewritePackStrategy {
@@ -59,8 +58,7 @@ public class CssCompressorPackStrategy extends CssRewritePackStrategy {
 			StringWriter sw = new StringWriter();
 			cssc.compress(sw, LINEBREAK_AFTER_CHARACTERS);
 			sw.flush();
-			String result = rewritePath(sw.toString(), path);
-			return result;
+      return rewritePath(sw.toString(), path);
 		}
 		catch (IOException ex) {
 			throw new PackException(ex);

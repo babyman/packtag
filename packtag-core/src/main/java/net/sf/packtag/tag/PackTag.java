@@ -41,28 +41,6 @@
  */
 package net.sf.packtag.tag;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.BodyContent;
-
 import net.sf.packtag.cache.PackCache;
 import net.sf.packtag.cache.Resource;
 import net.sf.packtag.implementation.DisabledPackStrategy;
@@ -72,6 +50,18 @@ import net.sf.packtag.util.ContextConfiguration;
 import net.sf.packtag.util.FileFetcher;
 import net.sf.packtag.util.HttpHeader;
 import net.sf.packtag.util.URIUtils;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspTagException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.BodyContent;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -399,7 +389,7 @@ public abstract class PackTag extends BaseTag {
 
 	/** Compresses multiple resources and stores them in the cache and as file (if cachetype is file) */
 	private Resource reloadCombinedResource(final List absolutePaths) throws Exception {
-		// Assumption: All resources allready have been loaded/reloaded by handleSingleResource
+		// Assumption: All resources already have been loaded/reloaded by handleSingleResource
 
 		StringBuffer minifedBuffer = new StringBuffer();
 		Iterator iterAps = absolutePaths.iterator();

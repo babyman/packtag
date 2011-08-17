@@ -19,17 +19,17 @@
  */
 package net.sf.packtag.strategy;
 
+import net.sf.packtag.util.URIUtils;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import net.sf.packtag.util.URIUtils;
 
 
 
 /**
  * A super Strategy with supporting methods.
  * 
- * @author Daniel Galán y Martins
+ * @author Daniel Galï¿½n y Martins
  * @version $Revision: 1.2 $
  */
 public abstract class CssRewritePackStrategy extends AbstractPackStrategy {
@@ -66,7 +66,7 @@ public abstract class CssRewritePackStrategy extends AbstractPackStrategy {
 				 * System.out.println(path + m.group(4));
 				 */
 				String rewrittenUrl = URIUtils.cleanRelativePath(cssBasePath + m.group(4));
-				m.appendReplacement(sb, "$1$2$3" + rewrittenUrl + "$5");
+        m.appendReplacement(sb, "$1$2$3" + rewrittenUrl + "$5");
 
 			}
 			m.appendTail(sb);

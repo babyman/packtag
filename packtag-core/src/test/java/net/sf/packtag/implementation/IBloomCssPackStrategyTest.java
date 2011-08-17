@@ -26,7 +26,7 @@ import net.sf.packtag.test.AbstractPacktagTestCase;
 /**
  * Test Case for the CSS algorithm taken from IBloom
  * 
- * @author Daniel Galán y Martins
+ * @author Daniel Galï¿½n y Martins
  * @version $Revision: 1.2 $
  */
 public class IBloomCssPackStrategyTest extends AbstractPacktagTestCase {
