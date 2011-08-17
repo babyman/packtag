@@ -32,13 +32,13 @@ import net.sf.packtag.strategy.PackException;
  * href="http://www.ibloomstudios.com/articles/php_css_compressor/">here</a>
  * for more information.
  * 
- * @author Daniel Galán y Martins
+ * @author Daniel Galï¿½n y Martins
  * @version $Revision: 1.3 $
  */
 public class IBloomCssPackStrategy extends CssRewritePackStrategy {
 
 	private static final String IBLOOM_REGEX_COMMENTS = "/\\*[^*]*\\*+([^/][^*]*\\*+)*/";
-	private static final String IBLOOM_REGEX_SPACES = "(\r\n)|(\r)|(\n)|(\t)|(  +)";
+	private static final String IBLOOM_REGEX_SPACES = "(\r\n)|(\r)|(\n)|(\t)";
 	private static final String EMPTY_STRING = "";
 
 
@@ -49,12 +49,20 @@ public class IBloomCssPackStrategy extends CssRewritePackStrategy {
 	 * under the web application.
 	 */
 	public String pack(final InputStream resourceAsStream, final Charset charset, final String path) throws PackException {
+
 		String resourceAsString = resourceToString(resourceAsStream, charset);
+
 		// remove comments
 		String result = resourceAsString.replaceAll(IBLOOM_REGEX_COMMENTS, EMPTY_STRING);
+
 		// remove tabs, spaces, newlines, etc.
 		result = result.replaceAll(IBLOOM_REGEX_SPACES, EMPTY_STRING);
+
+    // compact spaces but do not remove them
+		result = result.replaceAll(" +", " ");
+
 		result = rewritePath(result, path);
+
 		return result.trim();
 	}
 
